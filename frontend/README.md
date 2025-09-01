@@ -1,10 +1,22 @@
-# Vexocore Task Manager — Frontend (Vite + React)
+# Task Manager - Frontend
 
-## Quick start
-```bash
-cd frontend
-npm install
-cp .env.example .env
-# Ensure VITE_API_URL points to your backend
-npm run dev
-```
+A **React (Vite) application** for managing tasks with a clean and responsive UI.
+
+---
+
+## ✅ Features
+- User authentication (Sign up, Login)
+- Add, update, delete tasks
+- Toggle between **pending** and **completed**
+- Responsive design with Tailwind CSS
+- Integration with backend API
+
+---
+
+## 🛠 Tech Stack
+- **React (Vite)**
+- **Axios**
+- **Tailwind CSS**
+- **React Router**
+
+---
