@@ -15,6 +15,7 @@ A **full-stack MERN application** for managing tasks with authentication and CRU
 
 ##  Project Structure
 /backend # Express.js API (JWT Auth, MongoDB)
+
 /frontend # React UI (Vite + Axios)
 
 ---
