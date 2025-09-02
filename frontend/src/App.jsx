@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './app.css'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080'
+const API_URL = import.meta.env.VITE_API_URL || 'https://task-manager-backend-u8vs.onrender.com';
 
 function useAuth() {
   const [token, setToken] = useState(localStorage.getItem('token') || '')
