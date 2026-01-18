@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './app.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'https://task-manager-app-f5uf.onrender.com';
+console.log("API_URL USED BY FRONTEND:", API_URL);
+
 
 function useAuth() {
   const [token, setToken] = useState(localStorage.getItem('token') || '')
