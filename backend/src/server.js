@@ -12,29 +12,27 @@ dotenv.config();
 const app = express();
 
 /* ===========================
-   CORS CONFIG (FINAL & SAFE)
+   CORS CONFIG (FIXED & SAFE)
 =========================== */
 
-// ORIGIN example:
+// Example ORIGIN:
 // http://localhost:5173,https://dailytaskmanagerapp.netlify.app
 const allowedOrigins = process.env.ORIGIN
-  ? process.env.ORIGIN.split(",").map(origin => origin.trim())
+  ? process.env.ORIGIN.split(",").map(o => o.trim())
   : [];
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (Postman, curl, mobile apps)
-      if (!origin) {
-        return callback(null, true);
-      }
+      // Allow Postman, curl, server-side calls
+      if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
 
-      console.error("❌ Blocked by CORS:", origin);
-      return callback(new Error("Not allowed by CORS"));
+      // IMPORTANT: do NOT throw error here
+      return callback(null, false);
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -42,7 +40,7 @@ app.use(
   })
 );
 
-// Handle preflight requests explicitly
+// ALWAYS allow preflight
 app.options("*", cors());
 
 /* ===========================
@@ -60,7 +58,7 @@ app.get("/", (req, res) => {
   res.json({
     ok: true,
     service: "Vexocore Task Manager API",
-    environment: process.env.NODE_ENV || "development",
+    environment: process.env.NODE_ENV || "production",
   });
 });
 
@@ -77,8 +75,8 @@ app.use("/api/tasks", taskRoutes);
 
 app.use((err, req, res, next) => {
   console.error("❌ Error:", err.message);
-  res.status(err.status || 500).json({
-    message: err.message || "Internal Server Error",
+  res.status(500).json({
+    message: err.message || "Server error",
   });
 });
 
@@ -90,7 +88,7 @@ const PORT = process.env.PORT || 8080;
 const MONGO_URI = process.env.MONGO_URI;
 
 if (!MONGO_URI) {
-  console.error("❌ Missing MONGO_URI in environment variables");
+  console.error("❌ Missing MONGO_URI");
   process.exit(1);
 }
 
@@ -102,7 +100,7 @@ mongoose
       console.log(`🚀 API listening on port ${PORT}`);
     });
   })
-  .catch((error) => {
-    console.error("❌ MongoDB connection failed:", error.message);
+  .catch(err => {
+    console.error("❌ MongoDB connection failed:", err.message);
     process.exit(1);
   });
