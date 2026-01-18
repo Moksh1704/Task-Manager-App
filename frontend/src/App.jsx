@@ -113,7 +113,7 @@ export default function App() {
     return (
       <div className="container">
         <div className="card">
-          <h1>Vexocore Task Manager</h1>
+          <h1>Task Manager</h1>
           <p className="small">Organize your work and personal tasks in one place. Secure login, create tasks, set due dates, and stay productive.</p>
           {error && <p style={{ color: 'crimson' }}>{error}</p>}
           <form onSubmit={handleAuth} className="row">
