@@ -1,61 +1,70 @@
-# Task Manager App
+# Task Manager App (MERN Stack)
 
-A **full-stack MERN application** for managing tasks with authentication and CRUD features.
-
----
-
-##  Features
-- **User Authentication** – Sign up & login with JWT.
-- **Task Management** – Add, edit, and delete tasks stored in MongoDB.
-- **Task Filters** – Toggle between pending and completed tasks.
-- **Responsive UI** – Built with React (Vite).
-- **Deployment Ready** – Works on Render/Netlify/Vercel.
+A full-stack Task Manager web application built using the MERN stack.  
+Users can register, log in, and manage their personal tasks with full CRUD functionality.
 
 ---
 
-##  Project Structure
-/backend # Express.js API (JWT Auth, MongoDB)
+## Features
 
-/frontend # React UI (Vite + Axios)
-
----
-
-##  Tech Stack
-- **Frontend**: React (Vite), Axios, Tailwind CSS
-- **Backend**: Node.js, Express.js, JWT
-- **Database**: MongoDB Atlas
-- **Deployment**: Render (Backend), Netlify/Vercel (Frontend)
+- User authentication using JWT
+- Create, update, delete tasks
+- Mark tasks as completed or pending
+- Optional due date for tasks
+- Responsive and simple UI
+- Fully deployed application
 
 ---
 
-##  Deployment Guide
+## Tech Stack
 
-### **Backend on Render**
-1. Push your code to **GitHub**.
-2. Create a **MongoDB Atlas** cluster and copy the connection string.
-3. Create a **Render Web Service** from `/backend`:
-   - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
-   - **Environment Variables**:
-     ```
-     MONGO_URI=<Your MongoDB URI>
-     JWT_SECRET=<Your Secret>
-     ORIGIN=http://localhost:5173,https://your-frontend-domain
-     ```
+**Frontend**
+- React (Vite)
+- JavaScript
+- CSS
 
-### **Frontend on Netlify/Vercel**
-- Update `/frontend/.env`:
-VITE_API_URL=<Your Render backend URL>
+**Backend**
+- Node.js
+- Express.js
+- JWT Authentication
 
+**Database**
+- MongoDB Atlas
 
-- Deploy via **Netlify** or **Vercel**.
+**Deployment**
+- Netlify (Frontend)
+- Render (Backend)
+
 
 ---
 
-##  Screenshots
-*(Add your app screenshots here for better presentation.)*
+
+### Backend Deployment 
+
+URL =  https://task-manager-app-f5uf.onrender.com
+
+### Frontend
+
+URL = https://dailytaskmanagerapp.netlify.app
+
 
 ---
 
-##  Author
-Developed using the **MERN stack** for task management with a secure and scalable architecture.
+## Running Locally
+
+### Backend
+```bash
+cd backend
+npm install
+npm start
+```
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+---
+
+Developed as a full-stack MERN project for learning and practice.
